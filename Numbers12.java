@@ -1,5 +1,3 @@
-import java.util.Arrays; 
-
 public class Numbers12 {
 
     public static void main(String[] args) {
@@ -13,10 +11,5 @@ public class Numbers12 {
         System.out.println("Panjang Baris ke-0 (Kolom): " + myNumbers[0].length);
         System.out.println("Panjang Baris ke-1 (Kolom): " + myNumbers[1].length);
         System.out.println("Panjang Baris ke-2 (Kolom): " + myNumbers[2].length);
-        
-        System.out.println("--- Isi Elemen Jagged Array ---");
-        for (int i = 0; i < myNumbers.length; i++) {
-            System.out.println(Arrays.toString(myNumbers[i]));
-        }
     }
 }
