@@ -16,8 +16,8 @@ public class Bioskop12 {
         System.out.printf("%s \t %s%n", penonton[3][0], penonton[3][1]);
 
         System.out.print("Penonton pada baris ke-3: ");
-        for (String nama : penonton[2]) {
-            System.out.print(nama + " ");
+        for (int i = 0; i < penonton[2].length; i++) {
+            System.out.print(penonton[2][i] + ((i == penonton[2].length - 1) ? "" : ", "));
         }
         System.out.println();
     }
