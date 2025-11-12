@@ -99,7 +99,6 @@ public class BioskopWithScanner12 {
         System.out.println("\n==================================");
         System.out.println("       DAFTAR PENONTON BIOSKOP    ");
         System.out.println("==================================");
-        
         for (int i = 0; i < penonton.length; i++) {
             System.out.print("Penonton Baris " + (i + 1) + ": ");
             String[] barisSaatIni = penonton[i];
