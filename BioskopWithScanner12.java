@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BioskopWithScanner12 {
@@ -19,7 +20,7 @@ public class BioskopWithScanner12 {
                 menu = sc.nextInt();
                 sc.nextLine();
             } else {
-                System.out.println("Pilihan tidak valid. Harap masukkan angka (1, 2, atau 3).");
+                System.out.println("!!! Peringatan: Pilihan menu harus berupa angka (1, 2, atau 3). !!!");
                 sc.nextLine();
                 menu = 0;
                 continue;
@@ -45,36 +46,44 @@ public class BioskopWithScanner12 {
 
     public static void inputDataPenonton(Scanner sc, String[][] penonton) {
         String nama;
-        int baris;
-        int kolom;
+        int baris = 0; 
+        int kolom = 0; 
         String next;
 
         do {
             System.out.print("Masukkan nama: ");
             nama = sc.nextLine();
 
-            while (true) {
-                System.out.print("Masukkan baris (1-4): ");
-                baris = sc.nextInt();
-                System.out.print("Masukkan kolom (1-2): ");
-                kolom = sc.nextInt();
-                sc.nextLine();
+            boolean inputValid = false;
+            while (!inputValid) {
+                try {
+                    System.out.print("Masukkan baris (1-4): ");
+                    baris = sc.nextInt();
+                    
+                    System.out.print("Masukkan kolom (1-2): ");
+                    kolom = sc.nextInt();
+                    sc.nextLine();
 
-                if (baris < 1 || baris > penonton.length || kolom < 1 || kolom > penonton[0].length) {
-                    System.out.println("!!! Peringatan: Nomor baris/kolom kursi tidak tersedia. !!!");
-                    System.out.println("Silakan masukkan baris (1-4) dan kolom (1-2) yang benar.");
-                    continue;
+                    if (baris < 1 || baris > penonton.length || kolom < 1 || kolom > penonton[0].length) {
+                        System.out.println("!!! Peringatan: Nomor baris/kolom kursi tidak tersedia. !!!");
+                        System.out.println("Silakan masukkan baris (1-4) dan kolom (1-2) yang benar.");
+                        continue; 
+                    }
+
+                    if (penonton[baris - 1][kolom - 1] != null) {
+                        System.out.println("!!! Peringatan: Kursi sudah terisi oleh " + penonton[baris - 1][kolom - 1] + ". !!!");
+                        System.out.println("Silakan masukkan baris dan kolom yang kosong kembali.");
+                        continue;
+                    }
+
+                    inputValid = true;
+                    
+                } catch (InputMismatchException e) {
+                    System.out.println("!!! Peringatan: Input baris/kolom harus berupa angka bulat. !!!");
+                    sc.nextLine(); 
                 }
-
-                if (penonton[baris - 1][kolom - 1] != null) {
-                    System.out.println("!!! Peringatan: Kursi sudah terisi oleh " + penonton[baris - 1][kolom - 1] + ". !!!");
-                    System.out.println("Silakan masukkan baris dan kolom yang kosong kembali.");
-                    continue;
-                }
-
-                break;
             }
-
+            
             penonton[baris - 1][kolom - 1] = nama;
             System.out.println("Data " + nama + " berhasil diinput di Baris " + baris + " Kolom " + kolom + ".");
 
