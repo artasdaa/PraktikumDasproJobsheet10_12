@@ -15,7 +15,10 @@ public class Bioskop12 {
         System.out.printf("%s \t %s%n", penonton[2][0], penonton[2][1]);
         System.out.printf("%s \t %s%n", penonton[3][0], penonton[3][1]);
 
-        System.out.println("\n-----------------------------------------");
-        System.out.println("Jumlah baris (penonton.length): " + penonton.length);
+        System.out.print("Penonton pada baris ke-3: ");
+        for (int i = 0; i < penonton[2].length; i++) {
+            System.out.print(penonton[2][i] + ((i == penonton[2].length - 1) ? "" : ", "));
+        }
+        System.out.println();
     }
 }
